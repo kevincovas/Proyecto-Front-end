@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './ligaEspañola.css';
 
 export default function LigaEspañola() {
   const [data, setData] = useState({ scorers: [] });
@@ -21,23 +22,21 @@ export default function LigaEspañola() {
   return (
     <>
       <h2>Máximos goleadores de la Liga Española:</h2>
-      <table style={tableStyle}>
-        <th style={tableStyle}>
-          <td style={tableStyle}>Futbolista:</td>
-          <td style={tableStyle}>Goles:</td>
-          <td style={tableStyle}>País:</td>
-          <td style={tableStyle}>Equipo</td>
-        </th>
+      <table>
+        <thead>
+          <tr>
+            <th>Futbolista:</th>
+            <th>Goles:</th>
+            <th>País:</th>
+            <th>Equipo</th>
+          </tr>
+        </thead>
         {data.scorers.map((scorer) => (
-          <tr style={tableStyle}>
-            <td style={tableStyle} key={scorer.player.id}>
-              {scorer.player.name}
-            </td>
-            <td style={tableStyle}> {scorer.numberOfGoals}</td>
-            <td style={tableStyle}>{scorer.player.countryOfBirth}</td>
-            <td style={tableStyle} key={scorer.team.id}>
-              {scorer.team.name}
-            </td>
+          <tr>
+            <td key={scorer.player.id}>{scorer.player.name}</td>
+            <td> {scorer.numberOfGoals}</td>
+            <td>{scorer.player.countryOfBirth}</td>
+            <td key={scorer.team.id}>{scorer.team.name}</td>
           </tr>
         ))}
       </table>
@@ -45,9 +44,4 @@ export default function LigaEspañola() {
   );
 }
 
-const tableStyle = {
-  tableLayout: "fixed",
-  width: "100",
-  borderCollapse: "collapse",
-  border: "solid",
-};
+

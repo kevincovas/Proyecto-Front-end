@@ -21,23 +21,21 @@ export default function LigaItaliana() {
   return (
     <>
       <h2>Máximos goleadores de la Liga Italiana:</h2>
-      <table style={tableStyle}>
-        <th style={tableStyle}>
-          <td style={tableStyle}>Futbolista:</td>
-          <td style={tableStyle}>Goles:</td>
-          <td style={tableStyle}>País:</td>
-          <td style={tableStyle}>Equipo</td>
-        </th>
+      <table>
+        <thead>
+          <tr>
+            <th>Futbolista:</th>
+            <th>Goles:</th>
+            <th>País:</th>
+            <th>Equipo</th>
+          </tr>
+        </thead>
         {data.scorers.map((scorer) => (
-          <tr style={tableStyle}>
-            <td style={tableStyle} key={scorer.player.id}>
-              {scorer.player.name}
-            </td>
-            <td style={tableStyle}> {scorer.numberOfGoals}</td>
-            <td style={tableStyle}>{scorer.player.countryOfBirth}</td>
-            <td style={tableStyle} key={scorer.team.id}>
-              {scorer.team.name}
-            </td>
+          <tr>
+            <td key={scorer.player.id}>{scorer.player.name}</td>
+            <td> {scorer.numberOfGoals}</td>
+            <td>{scorer.player.countryOfBirth}</td>
+            <td key={scorer.team.id}>{scorer.team.name}</td>
           </tr>
         ))}
       </table>
@@ -45,9 +43,4 @@ export default function LigaItaliana() {
   );
 }
 
-const tableStyle = {
-  tableLayout: "fixed",
-  width: "100",
-  borderCollapse: "collapse",
-  border: "solid",
-};
+
